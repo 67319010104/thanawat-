@@ -73,7 +73,7 @@
         <!-- Overview Section -->
         <div id="overview" class="section p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-600 text-sm">สินค้าทั้งหมด</p>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-600 text-sm">ผู้ใช้ทั้งหมด</p>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-600 text-sm">คำสั่งซื้อวันนี้</p>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                <div class="bg-white rounded-lg shadow-md p-6 card-hover">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-600 text-sm">ยอดขายวันนี้</p>
@@ -123,7 +123,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+                <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-lg font-semibold mb-4">กิจกรรมล่าสุด</h3>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-3">
@@ -140,21 +140,21 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-sm">
+
+                <div class="bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-lg font-semibold mb-4">สินค้าขายดี</h3>
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
                             <span class="text-sm">iPhone 15 Pro</span>
-                            <span class="text-sm font-semibold">234 ชิ้น</span>
+                            <span class="text-sm font-semibold text-green-600">234 ชิ้น</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-sm">Samsung Galaxy S24</span>
-                            <span class="text-sm font-semibold">189 ชิ้น</span>
+                            <span class="text-sm font-semibold text-green-600">189 ชิ้น</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-sm">MacBook Air M3</span>
-                            <span class="text-sm font-semibold">156 ชิ้น</span>
+                            <span class="text-sm font-semibold text-green-600">156 ชิ้น</span>
                         </div>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
 
         <!-- Products Section -->
         <div id="products" class="section p-6 hidden">
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg shadow-md">
                 <div class="p-6 border-b border-gray-200">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold">จัดการสินค้า</h3>
@@ -241,7 +241,7 @@
 
         <!-- Users Section -->
         <div id="users" class="section p-6 hidden">
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg shadow-md">
                 <div class="p-6 border-b border-gray-200">
                     <div class="flex justify-between items-center">
                         <h3 class="text-lg font-semibold">จัดการผู้ใช้</h3>
@@ -256,30 +256,29 @@
                         <table class="w-full">
                             <thead>
                                 <tr class="border-b border-gray-200">
-                                    <th class="text-left py-3 px-4">ผู้ใช้</th>
+                                    <th class="text-left py-3 px-4">รูปโปรไฟล์</th>
+                                    <th class="text-left py-3 px-4">ชื่อ</th>
                                     <th class="text-left py-3 px-4">อีเมล</th>
                                     <th class="text-left py-3 px-4">เบอร์โทร</th>
-                                    <th class="text-left py-3 px-4">วันที่สมัคร</th>
                                     <th class="text-left py-3 px-4">สถานะ</th>
+                                    <th class="text-left py-3 px-4">วันที่สมัคร</th>
                                     <th class="text-left py-3 px-4">จัดการ</th>
                                 </tr>
                             </thead>
                             <tbody id="usersTable">
                                 <tr class="border-b border-gray-100">
                                     <td class="py-3 px-4">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-                                                J
-                                            </div>
-                                            <span class="font-medium">จอห์น สมิธ</span>
+                                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                            J
                                         </div>
                                     </td>
+                                    <td class="py-3 px-4 font-medium">จอห์น สมิธ</td>
                                     <td class="py-3 px-4">john@example.com</td>
                                     <td class="py-3 px-4">081-234-5678</td>
-                                    <td class="py-3 px-4">15/01/2024</td>
                                     <td class="py-3 px-4">
                                         <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
                                     </td>
+                                    <td class="py-3 px-4">15/01/2024</td>
                                     <td class="py-3 px-4">
                                         <button class="text-blue-600 hover:text-blue-800 mr-2">
                                             <i class="fas fa-edit"></i>
@@ -291,19 +290,17 @@
                                 </tr>
                                 <tr class="border-b border-gray-100">
                                     <td class="py-3 px-4">
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
-                                                ส
-                                            </div>
-                                            <span class="font-medium">สมใจ ใจดี</span>
+                                        <div class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                            M
                                         </div>
                                     </td>
-                                    <td class="py-3 px-4">somjai@example.com</td>
+                                    <td class="py-3 px-4 font-medium">มารี จอห์นสัน</td>
+                                    <td class="py-3 px-4">marie@example.com</td>
                                     <td class="py-3 px-4">082-345-6789</td>
-                                    <td class="py-3 px-4">12/01/2024</td>
                                     <td class="py-3 px-4">
                                         <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
                                     </td>
+                                    <td class="py-3 px-4">12/01/2024</td>
                                     <td class="py-3 px-4">
                                         <button class="text-blue-600 hover:text-blue-800 mr-2">
                                             <i class="fas fa-edit"></i>
@@ -322,7 +319,7 @@
 
         <!-- Orders Section -->
         <div id="orders" class="section p-6 hidden">
-            <div class="bg-white rounded-lg shadow-sm">
+            <div class="bg-white rounded-lg shadow-md">
                 <div class="p-6 border-b border-gray-200">
                     <h3 class="text-lg font-semibold">คำสั่งซื้อ</h3>
                 </div>
@@ -334,9 +331,10 @@
                                 <tr class="border-b border-gray-200">
                                     <th class="text-left py-3 px-4">หมายเลขคำสั่งซื้อ</th>
                                     <th class="text-left py-3 px-4">ลูกค้า</th>
-                                    <th class="text-left py-3 px-4">วันที่สั่ง</th>
+                                    <th class="text-left py-3 px-4">สินค้า</th>
                                     <th class="text-left py-3 px-4">ยอดรวม</th>
                                     <th class="text-left py-3 px-4">สถานะ</th>
+                                    <th class="text-left py-3 px-4">วันที่สั่ง</th>
                                     <th class="text-left py-3 px-4">จัดการ</th>
                                 </tr>
                             </thead>
@@ -344,11 +342,12 @@
                                 <tr class="border-b border-gray-100">
                                     <td class="py-3 px-4 font-medium">#12345</td>
                                     <td class="py-3 px-4">จอห์น สมิธ</td>
-                                    <td class="py-3 px-4">20/01/2024</td>
+                                    <td class="py-3 px-4">iPhone 15 Pro</td>
                                     <td class="py-3 px-4">฿39,900</td>
                                     <td class="py-3 px-4">
                                         <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">รอจัดส่ง</span>
                                     </td>
+                                    <td class="py-3 px-4">16/01/2024</td>
                                     <td class="py-3 px-4">
                                         <button class="text-blue-600 hover:text-blue-800 mr-2">
                                             <i class="fas fa-eye"></i>
@@ -367,51 +366,28 @@
 
         <!-- Settings Section -->
         <div id="settings" class="section p-6 hidden">
-            <div class="bg-white rounded-lg shadow-sm">
-                <div class="p-6 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold">ตั้งค่าระบบ</h3>
-                </div>
-                
-                <div class="p-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="font-semibold mb-4">ข้อมูลเว็บไซต์</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อเว็บไซต์</label>
-                                    <input type="text" value="My E-commerce" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย</label>
-                                    <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3">ร้านค้าออนไลน์ที่ดีที่สุด</textarea>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-4">การแจ้งเตือน</h4>
-                            <div class="space-y-4">
-                                <label class="flex items-center">
-                                    <input type="checkbox" checked class="mr-3">
-                                    <span class="text-sm">แจ้งเตือนคำสั่งซื้อใหม่</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" checked class="mr-3">
-                                    <span class="text-sm">แจ้งเตือนสินค้าหมด</span>
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" class="mr-3">
-                                    <span class="text-sm">แจ้งเตือนผู้ใช้ใหม่</span>
-                                </label>
-                            </div>
-                        </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold mb-6">ตั้งค่าระบบ</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อเว็บไซต์</label>
+                        <input type="text" value="My E-commerce Store" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
-                    
-                    <div class="mt-6 pt-6 border-t border-gray-200">
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                            บันทึกการตั้งค่า
-                        </button>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">อีเมลติดต่อ</label>
+                        <input type="email" value="admin@example.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">สกุลเงิน</label>
+                        <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>บาท (THB)</option>
+                            <option>ดอลลาร์ (USD)</option>
+                            <option>ยูโร (EUR)</option>
+                        </select>
+                    </div>
+                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        บันทึกการตั้งค่า
+                    </button>
                 </div>
             </div>
         </div>
@@ -426,36 +402,37 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
-            <form id="addProductForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อสินค้า</label>
-                    <input type="text" id="productName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <form id="addProductForm">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อสินค้า</label>
+                        <input type="text" id="productName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">หมวดหมู่</label>
+                        <select id="productCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <option value="">เลือกหมวดหมู่</option>
+                            <option value="มือถือ">มือถือ</option>
+                            <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
+                            <option value="แท็บเล็ต">แท็บเล็ต</option>
+                            <option value="อุปกรณ์เสริม">อุปกรณ์เสริม</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ราคา</label>
+                        <input type="number" id="productPrice" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">จำนวนสต็อก</label>
+                        <input type="number" id="productStock" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">หมวดหมู่</label>
-                    <select id="productCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        <option value="">เลือกหมวดหมู่</option>
-                        <option value="มือถือ">มือถือ</option>
-                        <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
-                        <option value="อุปกรณ์เสริม">อุปกรณ์เสริม</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ราคา</label>
-                    <input type="number" id="productPrice" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">จำนวนสต็อก</label>
-                    <input type="number" id="productStock" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                </div>
-                
-                <div class="flex space-x-3 pt-4">
-                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                        เพิ่มสินค้า
-                    </button>
-                    <button type="button" onclick="hideAddProductModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" onclick="hideAddProductModal()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
                         ยกเลิก
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        เพิ่มสินค้า
                     </button>
                 </div>
             </form>
@@ -471,27 +448,27 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
-            <form id="addUserForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
-                    <input type="text" id="userName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+            <form id="addUserForm">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">ชื่อ</label>
+                        <input type="text" id="userName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">อีเมล</label>
+                        <input type="email" id="userEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">เบอร์โทร</label>
+                        <input type="tel" id="userPhone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">อีเมล</label>
-                    <input type="email" id="userEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">เบอร์โทร</label>
-                    <input type="tel" id="userPhone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-                </div>
-                
-                <div class="flex space-x-3 pt-4">
-                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
-                        เพิ่มผู้ใช้
-                    </button>
-                    <button type="button" onclick="hideAddUserModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" onclick="hideAddUserModal()" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
                         ยกเลิก
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                        เพิ่มผู้ใช้
                     </button>
                 </div>
             </form>
@@ -502,9 +479,8 @@
         // Navigation functions
         function showSection(sectionName) {
             // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.add('hidden');
-            });
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.add('hidden'));
             
             // Show selected section
             document.getElementById(sectionName).classList.remove('hidden');
@@ -520,10 +496,9 @@
             document.getElementById('pageTitle').textContent = titles[sectionName];
             
             // Update active nav item
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('bg-blue-700');
-            });
-            event.target.classList.add('bg-blue-700');
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('bg-blue-700'));
+            event.target.closest('.nav-item').classList.add('bg-blue-700');
         }
 
         function toggleSidebar() {
@@ -600,7 +575,6 @@
             const name = document.getElementById('userName').value;
             const email = document.getElementById('userEmail').value;
             const phone = document.getElementById('userPhone').value;
-            const today = new Date().toLocaleDateString('th-TH');
             
             // Add new row to users table
             const table = document.getElementById('usersTable');
@@ -611,19 +585,17 @@
             
             newRow.innerHTML = `
                 <td class="py-3 px-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 ${randomColor} rounded-full flex items-center justify-center text-white font-semibold">
-                            ${initial}
-                        </div>
-                        <span class="font-medium">${name}</span>
+                    <div class="w-10 h-10 ${randomColor} rounded-full flex items-center justify-center text-white font-semibold">
+                        ${initial}
                     </div>
                 </td>
+                <td class="py-3 px-4 font-medium">${name}</td>
                 <td class="py-3 px-4">${email}</td>
                 <td class="py-3 px-4">${phone}</td>
-                <td class="py-3 px-4">${today}</td>
                 <td class="py-3 px-4">
                     <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
                 </td>
+                <td class="py-3 px-4">${new Date().toLocaleDateString('th-TH')}</td>
                 <td class="py-3 px-4">
                     <button class="text-blue-600 hover:text-blue-800 mr-2">
                         <i class="fas fa-edit"></i>
@@ -641,11 +613,10 @@
             alert('เพิ่มผู้ใช้เรียบร้อยแล้ว!');
         });
 
-        // Initialize
+        // Initialize with overview section
         document.addEventListener('DOMContentLoaded', function() {
-            // Set first nav item as active
             document.querySelector('.nav-item').classList.add('bg-blue-700');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97688f195275731c',t:'MTc1NjQzMzkxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9769a5ff9575731c',t:'MTc1NjQ0NTM0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
