@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - จัดการสินค้าและผู้ใช้</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Kanit', sans-serif; }
+        .sidebar-transition { transition: all 0.3s ease; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-blue-800 to-blue-900 text-white sidebar-transition z-50">
+        <div class="p-6 border-b border-blue-700">
+            <h1 class="text-xl font-bold flex items-center">
+                <i class="fas fa-tachometer-alt mr-3"></i>
+                Admin Dashboard
+            </h1>
+        </div>
+        
+        <nav class="mt-6">
+            <a href="#" onclick="showSection('overview')" class="nav-item flex items-center px-6 py-3 hover:bg-blue-700 transition-colors">
+                <i class="fas fa-chart-line mr-3"></i>
+                ภาพรวม
+            </a>
+            <a href="#" onclick="showSection('products')" class="nav-item flex items-center px-6 py-3 hover:bg-blue-700 transition-colors">
+                <i class="fas fa-box mr-3"></i>
+                จัดการสินค้า
+            </a>
+            <a href="#" onclick="showSection('users')" class="nav-item flex items-center px-6 py-3 hover:bg-blue-700 transition-colors">
+                <i class="fas fa-users mr-3"></i>
+                จัดการผู้ใช้
+            </a>
+            <a href="#" onclick="showSection('orders')" class="nav-item flex items-center px-6 py-3 hover:bg-blue-700 transition-colors">
+                <i class="fas fa-shopping-cart mr-3"></i>
+                คำสั่งซื้อ
+            </a>
+            <a href="#" onclick="showSection('settings')" class="nav-item flex items-center px-6 py-3 hover:bg-blue-700 transition-colors">
+                <i class="fas fa-cog mr-3"></i>
+                ตั้งค่า
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b px-6 py-4">
+            <div class="flex justify-between items-center">
+                <button onclick="toggleSidebar()" class="lg:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h2 id="pageTitle" class="text-2xl font-semibold text-gray-800">ภาพรวม</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-600 text-xl cursor-pointer"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%234F46E5'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Admin" class="w-8 h-8 rounded-full">
+                        <span class="text-gray-700 font-medium">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Section -->
+        <div id="overview" class="section p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">สินค้าทั้งหมด</p>
+                            <p class="text-3xl font-bold text-blue-600">1,234</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-box text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">ผู้ใช้ทั้งหมด</p>
+                            <p class="text-3xl font-bold text-green-600">5,678</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-users text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">คำสั่งซื้อวันนี้</p>
+                            <p class="text-3xl font-bold text-orange-600">89</p>
+                        </div>
+                        <div class="bg-orange-100 p-3 rounded-full">
+                            <i class="fas fa-shopping-cart text-orange-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">ยอดขายวันนี้</p>
+                            <p class="text-3xl font-bold text-purple-600">฿45,678</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold mb-4">กิจกรรมล่าสุด</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-sm text-gray-600">ผู้ใช้ใหม่ลงทะเบียน: john@example.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span class="text-sm text-gray-600">สินค้าใหม่ถูกเพิ่ม: iPhone 15 Pro</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                            <span class="text-sm text-gray-600">คำสั่งซื้อ #12345 ถูกยกเลิก</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold mb-4">สินค้าขายดี</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm">iPhone 15 Pro</span>
+                            <span class="text-sm font-semibold">234 ชิ้น</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm">Samsung Galaxy S24</span>
+                            <span class="text-sm font-semibold">189 ชิ้น</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm">MacBook Air M3</span>
+                            <span class="text-sm font-semibold">156 ชิ้น</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="section p-6 hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">จัดการสินค้า</h3>
+                        <button onclick="showAddProductModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus mr-2"></i>เพิ่มสินค้า
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4">รูปภาพ</th>
+                                    <th class="text-left py-3 px-4">ชื่อสินค้า</th>
+                                    <th class="text-left py-3 px-4">หมวดหมู่</th>
+                                    <th class="text-left py-3 px-4">ราคา</th>
+                                    <th class="text-left py-3 px-4">สต็อก</th>
+                                    <th class="text-left py-3 px-4">สถานะ</th>
+                                    <th class="text-left py-3 px-4">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-mobile-alt text-gray-500"></i>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4 font-medium">iPhone 15 Pro</td>
+                                    <td class="py-3 px-4">มือถือ</td>
+                                    <td class="py-3 px-4">฿39,900</td>
+                                    <td class="py-3 px-4">25</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">พร้อมขาย</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-laptop text-gray-500"></i>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4 font-medium">MacBook Air M3</td>
+                                    <td class="py-3 px-4">คอมพิวเตอร์</td>
+                                    <td class="py-3 px-4">฿44,900</td>
+                                    <td class="py-3 px-4">12</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">พร้อมขาย</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="users" class="section p-6 hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-semibold">จัดการผู้ใช้</h3>
+                        <button onclick="showAddUserModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="fas fa-user-plus mr-2"></i>เพิ่มผู้ใช้
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4">ผู้ใช้</th>
+                                    <th class="text-left py-3 px-4">อีเมล</th>
+                                    <th class="text-left py-3 px-4">เบอร์โทร</th>
+                                    <th class="text-left py-3 px-4">วันที่สมัคร</th>
+                                    <th class="text-left py-3 px-4">สถานะ</th>
+                                    <th class="text-left py-3 px-4">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable">
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                                J
+                                            </div>
+                                            <span class="font-medium">จอห์น สมิธ</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">john@example.com</td>
+                                    <td class="py-3 px-4">081-234-5678</td>
+                                    <td class="py-3 px-4">15/01/2024</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                                ส
+                                            </div>
+                                            <span class="font-medium">สมใจ ใจดี</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">somjai@example.com</td>
+                                    <td class="py-3 px-4">082-345-6789</td>
+                                    <td class="py-3 px-4">12/01/2024</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-800">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div id="orders" class="section p-6 hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold">คำสั่งซื้อ</h3>
+                </div>
+                
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4">หมายเลขคำสั่งซื้อ</th>
+                                    <th class="text-left py-3 px-4">ลูกค้า</th>
+                                    <th class="text-left py-3 px-4">วันที่สั่ง</th>
+                                    <th class="text-left py-3 px-4">ยอดรวม</th>
+                                    <th class="text-left py-3 px-4">สถานะ</th>
+                                    <th class="text-left py-3 px-4">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4 font-medium">#12345</td>
+                                    <td class="py-3 px-4">จอห์น สมิธ</td>
+                                    <td class="py-3 px-4">20/01/2024</td>
+                                    <td class="py-3 px-4">฿39,900</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">รอจัดส่ง</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-800">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings" class="section p-6 hidden">
+            <div class="bg-white rounded-lg shadow-sm">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-semibold">ตั้งค่าระบบ</h3>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-4">ข้อมูลเว็บไซต์</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อเว็บไซต์</label>
+                                    <input type="text" value="My E-commerce" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">คำอธิบาย</label>
+                                    <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3">ร้านค้าออนไลน์ที่ดีที่สุด</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-4">การแจ้งเตือน</h4>
+                            <div class="space-y-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="mr-3">
+                                    <span class="text-sm">แจ้งเตือนคำสั่งซื้อใหม่</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="mr-3">
+                                    <span class="text-sm">แจ้งเตือนสินค้าหมด</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3">
+                                    <span class="text-sm">แจ้งเตือนผู้ใช้ใหม่</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            บันทึกการตั้งค่า
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">เพิ่มสินค้าใหม่</h3>
+                <button onclick="hideAddProductModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="addProductForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อสินค้า</label>
+                    <input type="text" id="productName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">หมวดหมู่</label>
+                    <select id="productCategory" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <option value="">เลือกหมวดหมู่</option>
+                        <option value="มือถือ">มือถือ</option>
+                        <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
+                        <option value="อุปกรณ์เสริม">อุปกรณ์เสริม</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">ราคา</label>
+                    <input type="number" id="productPrice" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">จำนวนสต็อก</label>
+                    <input type="number" id="productStock" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                
+                <div class="flex space-x-3 pt-4">
+                    <button type="submit" class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        เพิ่มสินค้า
+                    </button>
+                    <button type="button" onclick="hideAddProductModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                        ยกเลิก
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">เพิ่มผู้ใช้ใหม่</h3>
+                <button onclick="hideAddUserModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="addUserForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                    <input type="text" id="userName" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">อีเมล</label>
+                    <input type="email" id="userEmail" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">เบอร์โทร</label>
+                    <input type="tel" id="userPhone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                </div>
+                
+                <div class="flex space-x-3 pt-4">
+                    <button type="submit" class="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        เพิ่มผู้ใช้
+                    </button>
+                    <button type="button" onclick="hideAddUserModal()" class="flex-1 bg-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-400 transition-colors">
+                        ยกเลิก
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functions
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Update page title
+            const titles = {
+                'overview': 'ภาพรวม',
+                'products': 'จัดการสินค้า',
+                'users': 'จัดการผู้ใช้',
+                'orders': 'คำสั่งซื้อ',
+                'settings': 'ตั้งค่า'
+            };
+            document.getElementById('pageTitle').textContent = titles[sectionName];
+            
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('bg-blue-700');
+            });
+            event.target.classList.add('bg-blue-700');
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // Modal functions
+        function showAddProductModal() {
+            document.getElementById('addProductModal').classList.remove('hidden');
+            document.getElementById('addProductModal').classList.add('flex');
+        }
+
+        function hideAddProductModal() {
+            document.getElementById('addProductModal').classList.add('hidden');
+            document.getElementById('addProductModal').classList.remove('flex');
+        }
+
+        function showAddUserModal() {
+            document.getElementById('addUserModal').classList.remove('hidden');
+            document.getElementById('addUserModal').classList.add('flex');
+        }
+
+        function hideAddUserModal() {
+            document.getElementById('addUserModal').classList.add('hidden');
+            document.getElementById('addUserModal').classList.remove('flex');
+        }
+
+        // Form submissions
+        document.getElementById('addProductForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('productName').value;
+            const category = document.getElementById('productCategory').value;
+            const price = document.getElementById('productPrice').value;
+            const stock = document.getElementById('productStock').value;
+            
+            // Add new row to products table
+            const table = document.getElementById('productsTable');
+            const newRow = table.insertRow();
+            newRow.innerHTML = `
+                <td class="py-3 px-4">
+                    <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-box text-gray-500"></i>
+                    </div>
+                </td>
+                <td class="py-3 px-4 font-medium">${name}</td>
+                <td class="py-3 px-4">${category}</td>
+                <td class="py-3 px-4">฿${parseInt(price).toLocaleString()}</td>
+                <td class="py-3 px-4">${stock}</td>
+                <td class="py-3 px-4">
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">พร้อมขาย</span>
+                </td>
+                <td class="py-3 px-4">
+                    <button class="text-blue-600 hover:text-blue-800 mr-2">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            // Reset form and close modal
+            this.reset();
+            hideAddProductModal();
+            
+            alert('เพิ่มสินค้าเรียบร้อยแล้ว!');
+        });
+
+        document.getElementById('addUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const phone = document.getElementById('userPhone').value;
+            const today = new Date().toLocaleDateString('th-TH');
+            
+            // Add new row to users table
+            const table = document.getElementById('usersTable');
+            const newRow = table.insertRow();
+            const initial = name.charAt(0).toUpperCase();
+            const colors = ['bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-pink-500', 'bg-indigo-500'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            newRow.innerHTML = `
+                <td class="py-3 px-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 ${randomColor} rounded-full flex items-center justify-center text-white font-semibold">
+                            ${initial}
+                        </div>
+                        <span class="font-medium">${name}</span>
+                    </div>
+                </td>
+                <td class="py-3 px-4">${email}</td>
+                <td class="py-3 px-4">${phone}</td>
+                <td class="py-3 px-4">${today}</td>
+                <td class="py-3 px-4">
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">ใช้งาน</span>
+                </td>
+                <td class="py-3 px-4">
+                    <button class="text-blue-600 hover:text-blue-800 mr-2">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="text-red-600 hover:text-red-800">
+                        <i class="fas fa-ban"></i>
+                    </button>
+                </td>
+            `;
+            
+            // Reset form and close modal
+            this.reset();
+            hideAddUserModal();
+            
+            alert('เพิ่มผู้ใช้เรียบร้อยแล้ว!');
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set first nav item as active
+            document.querySelector('.nav-item').classList.add('bg-blue-700');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97688f195275731c',t:'MTc1NjQzMzkxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
